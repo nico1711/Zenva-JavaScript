@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scope</title>
+</head>
+<body>
+	Scope
+	<script>
+		
+		//Global scope variable
+		var factor = 100;
+		var c = 1;
+
+		//1 meter is 100 cm
+		function converter(m) {
+			// Local scope variable
+			var c = m * 100;
+			return c;
+		}
+
+		console.log(c);
+
+		var result = converter(10);
+		console.log(result);
+	</script>
+
+</body>
+</html>
