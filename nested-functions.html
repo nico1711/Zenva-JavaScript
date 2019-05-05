@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nested Functions</title>
+</head>
+<body>
+	Nested Functions
+	<script>
+		function showEverywhere(text) {
+
+			// Can't be used outside this function
+			function decorate(a) {
+				return "###---" + a + "---###";
+			};
+
+			text = decorate(text);
+
+			console.log(text);
+			alert(text);
+		};
+
+		showEverywhere("Hello World");
+	</script>
+
+</body>
+</html>

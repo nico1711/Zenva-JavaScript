@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Methods</title>
+</head>
+<body>
+	Methods
+	<script>
+		
+		var player = {
+			x: 100, 
+			y: 200,
+			energy: 10,
+			weapons: ['sword', 'gun'],
+			addWeapon: function(newWeapon) {
+				this.weapons.push(newWeapon);
+			}
+		};
+
+		player.addWeapon('axe');
+		player.addWeapon('laser gun');
+		player.addWeapon('knife');
+
+		console.log(player.weapons);
+
+	</script>
+
+</body>
+</html>
