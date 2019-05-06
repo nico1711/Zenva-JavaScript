@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title></title>
+	<style>canvas{border: 1px solid black;}</style>
+</head>
+<body>
+	<h1>If, Else Statements</h1>
+	<canvas id="mycanvas" width="300" height="300"></canvas>
+	<script>
+
+		//initial position
+		var x = 10;
+		var y = 10;
+
+		//rectangle dimensions
+		var w = 20;
+		var h = 30;
+
+		//speed at wich it moves
+		var speed = 2;
+
+		//grab the canvas and context
+		var canvas = document.getElementById("mycanvas");
+		var ctx = canvas.getContext("2d");
+
+		//Color Zones
+		var blueZone, greenZone;
+
+		//update the rectangle position
+		var update = function() {
+
+			// Variables for limits
+			var crossedRightLimit = x >= 270;
+			var crossedLeftLimit = x <= 10;
+
+			// Checking if right limit is reached
+			if (crossedRightLimit) {
+				x = 270;
+				speed = -speed;
+			}
+
+			// Checking if left limit is reached
+			else if(crossedLeftLimit) {
+				x = 10;
+				speed = -speed;
+			}
+
+			x = x + speed;
+
+			// Assign boolean values to zone colors
+			blueZone = x > 0 && x < 100;
+			greenZone = !blueZone && x < 200;
+		};
+
+		var draw = function() {
+			ctx.clearRect(0,0,500,300);
+
+			//Checks in witch zone it is to assign a color
+			if(blueZone){
+				ctx.fillStyle = "#3333FF";	
+			}
+
+			else if(greenZone){
+				ctx.fillStyle = "#00CC66";
+			}
+			
+			else{
+				ctx.fillStyle = "rgb(200, 0, 100)";
+			}
+			ctx.fillRect(x, y, w, h)
+		};
+
+	    var step = function() {
+
+	      update();
+	      draw();
+
+	      window.requestAnimationFrame(step);
+	    };
+
+		step();
+
+	</script>
+</body>
+</html>
