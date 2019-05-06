@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title></title>
+	<style>canvas{border: 1px solid black;}</style>
+</head>
+<body>
+	<h1>If, Else Statements</h1>
+	<canvas id="mycanvas" width="300" height="300"></canvas>
+	<script>
+
+		//initial position
+		var x = 10;
+		var y = 10;
+
+		//rectangle dimensions
+		var w = 20;
+		var h = 30;
+
+		//speed at wich it moves
+		var speed = 2;
+
+		//grab the canvas and context
+		var canvas = document.getElementById("mycanvas");
+		var ctx = canvas.getContext("2d");
+
+		//update the rectangle position
+		var update = function() {
+			if (x >= 270) {
+				x = 270;
+				speed = -speed;
+			}
+
+			else if(x <= 10) {
+				x = 10;
+				speed = -speed;
+			}
+
+			x = x + speed;
+		};
+
+		var draw = function() {
+			ctx.clearRect(0,0,500,300);
+			ctx.fillStyle = "rgb(0, 100, 100)";
+			ctx.fillRect(x, y, w, h)
+		};
+
+	    var step = function() {
+
+	      update();
+	      draw();
+
+	      window.requestAnimationFrame(step);
+	    };
+
+		step();
+
+	</script>
+</body>
+</html>
